@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" name-as-sort-order="all" sort-separator=" " demote-non-dropping-particle="never" initialize-with=" " initialize-with-hyphen="false" page-range-format="expanded" default-locale="zh-CN">
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" name-as-sort-order="all" sort-separator=" " demote-non-dropping-particle="never" initialize-with="" initialize-with-hyphen="false" page-range-format="expanded" default-locale="zh-CN">
   <info>
-    <title>GB/T 7714—2015（顺序编码，双语，姓名不大写，无 URL、DOI）</title>
-    <id>https://zotero-chinese.com/styles/GB-T-7714—2015（顺序编码，双语，姓名不大写，无URL、DOI）</id>
-    <link href="https://zotero-chinese.com/styles/GB-T-7714—2015（顺序编码，双语，姓名不大写，无URL、DOI）" rel="self"/>
+    <title>GB/T 7714—2015（顺序编码，双语，姓名无空格，无“等”，无URL、DOI）</title>
+    <id>https://zotero-chinese.com/styles/GB-T-7714—2015（顺序编码，双语，姓名无空格，无“等”，无URL、DOI）</id>
+    <link href="https://zotero-chinese.com/styles/GB-T-7714—2015（顺序编码，双语，姓名无空格，无“等”，无URL、DOI）" rel="self"/>
     <link href="https://zotero-chinese.com/styles/GB-T-7714—2015（顺序编码，双语）" rel="template"/>
     <link href="https://std.samr.gov.cn/gb/search/gbDetailed?id=71F772D8055ED3A7E05397BE0A0AB82A" rel="documentation"/>
     <author>
@@ -20,7 +20,7 @@
     </contributor>
     <category citation-format="numeric"/>
     <category field="generic-base"/>
-    <summary>1. 按照语言显示“等”或“et al.”；2. 姓名取消全大写；3. 仅纯电子资源显示引用日期和 URL；4. 无 DOI。</summary>
+    <summary>1. 英文文献使用“et al.”；2. 姓名取消全大写，名缩写无空格；3. 仅纯电子资源显示引用日期和 URL；4. 无 DOI。</summary>
     <updated>2026-03-17T21:41:55+08:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
@@ -31,6 +31,12 @@
       <term name="close-quote">”</term>
       <term name="open-inner-quote">‘</term>
       <term name="close-inner-quote">’</term>
+      <term name="etal" form="short">等</term>
+    </terms>
+  </locale>
+  <locale xml:lang="en">
+    <terms>
+      <term name="etal" form="short">et al.</term>
     </terms>
   </locale>
   <locale>
@@ -44,9 +50,10 @@
       <term name="page-range-delimiter">-</term>
     </terms>
   </locale>
-  <!-- 主要责任者 -->
+  <!-- 主要责任者（修改：名缩写无空格） -->
   <macro name="author">
-    <names variable="author">
+    <names variable="author" et-al-min="4" et-al-use-first="3" delimiter=", ">
+      <initialize-with/>
       <name/>
       <substitute>
         <names variable="composer"/>
@@ -178,14 +185,16 @@
   </macro>
   <!-- 其他责任者 -->
   <macro name="secondary-contributors">
-    <names variable="translator">
+    <names variable="translator" et-al-min="4" et-al-use-first="3">
+      <initialize-with/>
       <name/>
       <label form="short" prefix=", "/>
     </names>
   </macro>
   <!-- 专著主要责任者 -->
   <macro name="container-contributors">
-    <names variable="editor">
+    <names variable="editor" et-al-min="4" et-al-use-first="3">
+      <initialize-with/>
       <name/>
       <substitute>
         <names variable="editorial-director"/>
